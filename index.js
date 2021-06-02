@@ -12,7 +12,11 @@ const consultationRoutes = require("./view/consultation")
 
 const bodyParser = require("body-parser");
 
-app.use(bodyParser.json())
+const cors = require("cors")
+
+app.use(bodyParser.json());
+
+app.use(cors());
 
 app.use("/api",blogRoutes)
 
