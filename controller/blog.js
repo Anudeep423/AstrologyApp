@@ -3,6 +3,27 @@ const formidable = require("formidable");
 const _ = require("lodash");
 const fs = require("fs");
 
+exports.getBlogById = (req,res,next,id) => {
+
+  BlogSchema.findOne({_id : id  })
+  .exec( (err,blog) => {
+    if(err){
+      res.json(err).status(404)
+    }
+    req.blog = blog
+     next();
+  }  )
+  
+
+}
+
+exports.photo = (req, res) => {
+  if (req.blog.Img.data) {
+    res.set("Content-Type", req.blog.Img.contentType);
+    return res.send(req.blog.Img.data);
+  }
+};
+
 
 exports.createBlog = (req, res) => {
     let form = new formidable.IncomingForm();
@@ -61,4 +82,19 @@ exports.createBlog = (req, res) => {
         }
         res.json(products).status(200);
       });
+  };
+
+  exports.deleteBlog = (req, res) => {
+    let blog = req.blog;
+    blog.remove((err, deletedblog) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Failed to delete the blog"
+        });
+      }
+      res.json({
+        message: "Deletion was a success",
+        deletedblog
+      });
+    });
   };
