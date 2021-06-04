@@ -10,6 +10,8 @@ const blogRoutes = require("./view/blog");
 
 const consultationRoutes = require("./view/consultation")
 
+const userRoutes = require("./view/user")
+
 const bodyParser = require("body-parser");
 
 const cors = require("cors")
@@ -21,6 +23,8 @@ app.use(cors());
 app.use("/api",blogRoutes)
 
 app.use("/api",consultationRoutes);
+
+app.use("/api",userRoutes)
 
 mongoose.connect("mongodb+srv://Anudeep123:12345678aA$@cluster0.ni9vp.mongodb.net/AstroApp?retryWrites=true&w=majority" ,{ useNewUrlParser: true,useUnifiedTopology: true })
 .then(() => {console.log("DB CONNECTED")} )
