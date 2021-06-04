@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const {createBlog,getAllBlogs,getBlogById,photo,deleteBlog} = require("../controller/blog");
+const {createBlog,getAllBlogs,getBlogById,photo,deleteBlog,getBlog} = require("../controller/blog");
 
 router.param("blogid" , getBlogById )
 
@@ -10,6 +10,8 @@ router.param("blogid" , getBlogById )
 router.post("/create/blog" ,  createBlog);
 
 router.get("/getAllBlogs" ,  getAllBlogs);
+
+router.get("/getablog/:blogid", getBlog  )
 
 router.get("/getphoto/:blogid" , photo );
 

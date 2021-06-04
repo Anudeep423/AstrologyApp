@@ -18,6 +18,7 @@ exports.getBlogById = (req,res,next,id) => {
 }
 
 exports.photo = (req, res) => {
+  console.log(req.blog)
   if (req.blog.Img.data) {
     res.set("Content-Type", req.blog.Img.contentType);
     return res.send(req.blog.Img.data);
@@ -98,3 +99,8 @@ exports.createBlog = (req, res) => {
       });
     });
   };
+
+  exports.getBlog = (req,res) => {
+
+    return res.json(req.blog)
+  }
