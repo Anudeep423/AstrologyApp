@@ -1,4 +1,6 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const uuidv1 = require("uuid")
+const crypto = require("crypto")
 
 const userSchema = new mongoose.Schema({
 
@@ -10,8 +12,7 @@ const userSchema = new mongoose.Schema({
         type : String,
         required : true
     } ,  encry_password: {
-        type: String,
-        required: true
+        type: String
       },
       salt: String,
       role: {

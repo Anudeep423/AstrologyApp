@@ -15,20 +15,20 @@ exports.signup = (req,res) => {
 
 exports.signin = (req,res) => {
 
-    UserSchema.findOne({ email }, (err, user) => {
+    UserSchema.findOne({ email : req.body.email }, (err, user) => {
         if (err || !user) {
           return res.status(400).json({
             error: "USER email does not exists"
           });
         }
     
-        if (!user.autheticate(password)) {
+        if (!user.autheticate(req.body.password)) {
           return res.status(401).json({
             error: "Email and password do not match"
           });
         }
 
-        return res.json({Message : "User found"})
+        return res.json({Message : "User found and successfully Logged In"})
 
     })
     
