@@ -26,7 +26,9 @@ app.use("/api",consultationRoutes);
 
 app.use("/api",userRoutes)
 
-mongoose.connect("mongodb+srv://Anudeep123:12345678aA$@cluster0.ni9vp.mongodb.net/AstroApp?retryWrites=true&w=majority" ,{ useNewUrlParser: true,useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://Anudeep123:12345678aA$@cluster0.ni9vp.mongodb.net/AstroApp?retryWrites=true&w=majority" ,{   useNewUrlParser: true,
+useUnifiedTopology: true,
+useCreateIndex: true })
 .then(() => {console.log("DB CONNECTED")} )
 .catch(err   => {console.log(err)} )
 
@@ -45,3 +47,12 @@ app.listen(port , () => {
 })
 
 console.log("INDEX DOT JS");
+
+
+
+
+
+
+
+
+
